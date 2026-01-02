@@ -8,31 +8,49 @@
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: #0b1220; color: #e9ecf1; }
+
+    /* --- Animations & Motion --- */
+    :root { --card: rgba(255,255,255,.05); --border: rgba(255,255,255,.1); }
+    .fade-in { opacity: 0; transform: translateY(12px); animation: fadeIn .7s ease forwards; }
+    .fade-in.delay-1 { animation-delay: .1s; }
+    .fade-in.delay-2 { animation-delay: .2s; }
+    .fade-in.delay-3 { animation-delay: .3s; }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
     header { padding: 48px 24px 24px; max-width: 1080px; margin: 0 auto; }
     .badge { display: inline-block; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.08); font-size: 12px; letter-spacing: .3px; }
     h1 { margin: 16px 0 8px; font-size: 42px; line-height: 1.1; }
     p.lead { opacity: .9; max-width: 720px; }
+
     nav { position: sticky; top: 0; background: rgba(11,18,32,.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.05); }
     nav ul { display: flex; gap: 16px; list-style: none; margin: 0; padding: 10px 20px; max-width: 1080px; margin: 0 auto; }
-    nav a { color: #cfd5df; text-decoration: none; font-size: 14px; padding: 8px 10px; border-radius: 10px; }
-    nav a:hover { background: rgba(255,255,255,.08); }
+    nav a { color: #cfd5df; text-decoration: none; font-size: 14px; padding: 8px 10px; border-radius: 10px; transition: background .25s, transform .25s; }
+    nav a:hover { background: rgba(255,255,255,.08); transform: translateY(-1px); }
+
     section { max-width: 1080px; margin: 0 auto; padding: 48px 24px; }
     .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-    .card { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.08); border-radius: 18px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
-    .card h3 { margin-top: 0; }
-    .pill { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 12px; background: rgba(255,255,255,.08); margin-right: 6px; margin-bottom: 6px; }
-    .blog-item { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.08); border-radius: 18px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,.25); transition: transform .25s, box-shadow .25s, border .25s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.18); }
+
+    .pill { display: inline-block; padding: 6px 12px; border-radius: 999px; font-size: 12px; background: rgba(255,255,255,.08); margin: 4px 6px 6px 0; border: 1px solid rgba(255,255,255,.12); }
+
+    .achievement { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .achievement strong { font-size: 15px; }
+    .tag { display: inline-block; padding: 2px 8px; border-radius: 8px; background: rgba(0,255,153,.15); border: 1px solid rgba(0,255,153,.25); font-size: 11px; }
+
     footer { padding: 40px 24px 60px; max-width: 1080px; margin: 0 auto; opacity: .85; font-size: 14px; }
-    a.btn { display: inline-block; margin-top: 16px; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,.15); text-decoration: none; color: white; }
-    a.btn:hover { background: rgba(255,255,255,.1); }
+    a.btn { display: inline-block; margin-top: 16px; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,.15); text-decoration: none; color: white; transition: background .25s, transform .25s; }
+    a.btn:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
   </style>
 </head>
 <body>
   <header>
     <span class="badge">Bug Bounty Hunter • Security Researcher</span>
     <h1>Mohd Uzair Kaaf</h1>
-    <p class="lead">I hunt for vulnerabilities, break things ethically, and help companies fix real security issues. This is where I showcase my work, achievements, and write about my research journey.</p>
+    <p class="lead">I hunt for vulnerabilities, break things ethically, and help companies fix real-world security issues. This is my personal portfolio — security notes, writeups, and highlights from my research journey.</p>
     <a class="btn" href="mailto:uzairkalf60@gmail.com">Contact me</a>
+    <a class="btn" href="#blog">Read my Writeups</a>
   </header>
 
   <nav>
@@ -54,44 +72,69 @@
     </p>
   </section>
 
-  <section id="highlights">
-    <h2>Program Highlights</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>TÜV Rheinland Group (Private Program)</h3>
-        <p>Ranked among the top researchers. Multiple accepted vulnerability reports, including access control issues and booking manipulation bugs.</p>
+  <section id="highlights" class="fade-in delay-1">
+    <h2>Program Highlights & Impact</h2>
+    <div class="card">
+      <div class="achievement">
+        <div>
+          <strong>TÜV Rheinland – Private Program</strong>
+          <div class="tag">Accepted Reports</div>
+          <p>Multiple vulnerabilities reported including access control weaknesses and booking manipulation logic issues.</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>API Security Research</h3>
-        <p>Repeated findings involving misconfigured APIs, exposed schemas, and insecure endpoints leading to account actions and sensitive operations.</p>
+      <div class="achievement">
+        <div>
+          <strong>API Security Research</strong>
+          <div class="tag">Real-World Coverage</div>
+          <p>Identified insecure API behaviors, exposed schemas, and misconfigurations across different environments.</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>Learning & Building</h3>
-        <p>Actively improving skills in Python, JavaScript, regex, GraphQL testing, and mobile app assessments.</p>
+      <div class="achievement">
+        <div>
+          <strong>Continuous Learning</strong>
+          <div class="tag">Hands-on</div>
+          <p>Actively experimenting with tools and techniques to improve methodology and reporting quality.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="skills">
+  <section id="skills" class="fade-in delay-2">
     <h2>Core Skills</h2>
     <div>
-      <span class="pill">IDOR & Access Control</span>
+      <span class="pill">OWASP Top 10</span>
       <span class="pill">API Security</span>
-      <span class="pill">GraphQL Testing</span>
-      <span class="pill">Bug Bounty Methodology</span>
-      <span class="pill">Automation & Wordlists</span>
-      <span class="pill">Android App Testing</span>
-      <span class="pill">Reporting & Write‑ups</span>
+      <span class="pill">Burp Suite</span>
+      <span class="pill">Caido</span>
+      <span class="pill">Nmap</span>
+      <span class="pill">SQLMap</span>
+      <span class="pill">Linux</span>
+      <span class="pill">Python (Basics)</span>
     </div>
+    <p style="opacity:.75;margin-top:10px">Focused on understanding vulnerabilities deeply and documenting findings clearly.</p>
   </section>
 
   <section id="blog">
     <h2>Blog / Writeups</h2>
-    <div class="blog-item">
-      <strong>Coming soon:</strong> I will publish detailed writeups about my research, methodologies, and lessons learned.
-      <br />
-      <small>(Add posts here as Markdown or links to GitHub issues, gists, or a /blog folder.)</small>
+    <p style="opacity:.9">I publish practical writeups about real-world bugs, methodology, and lessons from security research.</p>
+
+    <div class="card">
+      <h3>Demo Writeup — Simple IDOR Discovery</h3>
+      <p>
+        During testing of a web application, I noticed that user profile data was being loaded using a numeric ID in the URL.
+        After logging in as a normal user, I changed my own ID from <code>/api/profile/102</code> to <code>/api/profile/103</code>.
+      </p>
+      <p>
+        The server returned another user’s data without any permission checks. This confirmed an <strong>Insecure Direct Object Reference (IDOR)</strong> vulnerability.
+      </p>
+      <p>
+        <strong>Impact:</strong> An attacker could view information belonging to other users.
+        The fix is to verify ownership on the server side, instead of trusting user-controlled IDs.
+      </p>
+      <small>Note: This is a demo example only — real reports are always responsibly disclosed.</small>
     </div>
+
+    <p style="margin-top:16px;opacity:.7">(Replace this later with your own writeups.)</p>
   </section>
 
   <section id="contact">
