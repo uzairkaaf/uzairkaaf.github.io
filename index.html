@@ -50,7 +50,7 @@
     <h1>Mohd Uzair Kaaf</h1>
     <p class="lead">I hunt for vulnerabilities, break things ethically, and help companies fix real-world security issues. This is my personal portfolio — security notes, writeups, and highlights from my research journey.</p>
     <a class="btn" href="mailto:uzairkalf60@gmail.com">Contact me</a>
-    <a class="btn" href="#blog">Read my Writeups</a>
+    <a class="btn" href="https://medium.com/@uzairkaaf" target="_blank">Read my Writeups</a>
   </header>
 
   <nav>
@@ -58,7 +58,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#highlights">Highlights</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#blog">Blog</a></li>
+      <li><a href="#highlights">Achievements</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -73,28 +73,27 @@
   </section>
 
   <section id="highlights" class="fade-in delay-1">
-    <h2>Program Highlights & Impact</h2>
-    <div class="card">
-      <div class="achievement">
-        <div>
-          <strong>TÜV Rheinland – Private Program</strong>
-          <div class="tag">Accepted Reports</div>
-          <p>Multiple vulnerabilities reported including access control weaknesses and booking manipulation logic issues.</p>
-        </div>
+    <h2>Achievements</h2>
+
+    <p style="opacity:.85">Some highlights that represent my learning, impact, and progress as a security researcher.</p>
+
+    <div class="grid">
+      <div class="card">
+        <span class="pill">Accepted Reports</span>
+        <h3>TÜV Rheinland (Private Program)</h3>
+        <p>Reported legitimate vulnerabilities including access control issues and booking manipulation logic problems.</p>
       </div>
-      <div class="achievement">
-        <div>
-          <strong>API Security Research</strong>
-          <div class="tag">Real-World Coverage</div>
-          <p>Identified insecure API behaviors, exposed schemas, and misconfigurations across different environments.</p>
-        </div>
+
+      <div class="card">
+        <span class="pill">API Research</span>
+        <h3>API Security Findings</h3>
+        <p>Identified misconfigurations, schema exposures, and weak authorization checks in real applications.</p>
       </div>
-      <div class="achievement">
-        <div>
-          <strong>Continuous Learning</strong>
-          <div class="tag">Hands-on</div>
-          <p>Actively experimenting with tools and techniques to improve methodology and reporting quality.</p>
-        </div>
+
+      <div class="card">
+        <span class="pill">Learning Journey</span>
+        <h3>Constant Skill Growth</h3>
+        <p>Actively experimenting with tools, methodologies, automation, and documenting what I learn.</p>
       </div>
     </div>
   </section>
@@ -114,28 +113,7 @@
     <p style="opacity:.75;margin-top:10px">Focused on understanding vulnerabilities deeply and documenting findings clearly.</p>
   </section>
 
-  <section id="blog">
-    <h2>Blog / Writeups</h2>
-    <p style="opacity:.9">I publish practical writeups about real-world bugs, methodology, and lessons from security research.</p>
-
-    <div class="card">
-      <h3>Demo Writeup — Simple IDOR Discovery</h3>
-      <p>
-        During testing of a web application, I noticed that user profile data was being loaded using a numeric ID in the URL.
-        After logging in as a normal user, I changed my own ID from <code>/api/profile/102</code> to <code>/api/profile/103</code>.
-      </p>
-      <p>
-        The server returned another user’s data without any permission checks. This confirmed an <strong>Insecure Direct Object Reference (IDOR)</strong> vulnerability.
-      </p>
-      <p>
-        <strong>Impact:</strong> An attacker could view information belonging to other users.
-        The fix is to verify ownership on the server side, instead of trusting user-controlled IDs.
-      </p>
-      <small>Note: This is a demo example only — real reports are always responsibly disclosed.</small>
-    </div>
-
-    <p style="margin-top:16px;opacity:.7">(Replace this later with your own writeups.)</p>
-  </section>
+  
 
   <section id="contact">
     <h2>Contact</h2>
